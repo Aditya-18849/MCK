@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import { ChevronDown, Pause, Play } from "lucide-react";
 import {
   motion,
   useInView,
@@ -11,13 +11,14 @@ import {
 } from "motion/react";
 import { Highlight } from "@/components/unlumen-ui/primitives/effects/velocity-highlight";
 import { MagneticButton } from "@/components/unlumen-ui/magnetic-button";
+import { WhatsAppButton } from "@/components/whatsapp";
 import { LINKS } from "@/data";
 import { HERO_POSES, PosingFigure, usePosesReady } from "@/sections/PosingFigure";
 
 const NAV = [
-  { label: "Thirteen days", href: "#thirteen" },
-  { label: "Posing", href: "#posing" },
-  { label: "Record", href: "#record" },
+  { label: "Why Murat", href: "#thirteen" },
+  { label: "His eye", href: "#posing" },
+  { label: "Track record", href: "#record" },
   { label: "Partners", href: "#partners" },
 ];
 
@@ -123,7 +124,7 @@ export function Hero() {
       onPointerLeave={() => mx.set(0)}
       className="relative isolate flex flex-col overflow-hidden bg-ice lg:block lg:h-[max(640px,min(100svh,58vw))]"
     >
-      <h1 className="sr-only">Murat Can Karahasanlar, IFBB Pro Classic Physique</h1>
+      <h1 className="sr-only">Coaching by MCK: one-to-one online coaching with Murat Can Karahasanlar</h1>
 
       <div className="relative h-[128vw] max-h-[820px] overflow-x-clip sm:h-[105vw] sm:max-h-none lg:absolute lg:inset-0 lg:h-auto">
         <motion.div
@@ -159,32 +160,44 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <div className="wrap relative z-20 flex flex-col gap-10 py-10 lg:pointer-events-none lg:absolute lg:inset-x-0 lg:top-[29.5vw] lg:flex-row lg:items-start lg:justify-between lg:py-0">
+      <div className="wrap relative z-20 flex flex-col gap-10 py-10 lg:pointer-events-none lg:absolute lg:inset-x-0 hero-copy-row lg:flex-row lg:items-start lg:justify-between lg:py-0">
         <div className="hero-copy pointer-events-auto max-w-[17rem]">
           <p className="text-xl leading-snug font-medium">
-            IFBB Pro, Men’s Classic Physique. One-to-one online coach in Melbourne.
+            One-to-one online coaching with an IFBB Pro and Mr. Olympia competitor.
           </p>
-          <MagneticButton href={LINKS.coaching} size="lg" className="mt-6">
-            Start coaching
-          </MagneticButton>
+          <div className="hero-actions mt-5 flex flex-col items-start gap-3">
+            <WhatsAppButton />
+            <MagneticButton href={LINKS.coaching} size="lg">
+              Start coaching
+            </MagneticButton>
+          </div>
         </div>
         <div className="hero-copy pointer-events-auto max-w-[15rem] lg:text-right">
           <a href={LINKS.olympia} target="_blank" rel="noopener noreferrer" className="group block">
             <span className="font-display block text-6xl leading-none">15th</span>
             <span className="mt-2 block text-lg leading-snug font-medium underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-current">
-              2026 Mr. Olympia, Las Vegas
+              Your coach’s placing at the 2026 Mr. Olympia
             </span>
           </a>
-          {!reduced && (
-            <button
-              type="button"
-              onClick={() => setPaused((p) => !p)}
-              className="mt-5 inline-flex cursor-pointer items-center gap-2 py-2 text-base font-semibold underline decoration-transparent underline-offset-4 hover:decoration-current"
+          <div className="hero-cues mt-5 flex flex-col items-start gap-x-6 lg:items-end">
+            {!reduced && (
+              <button
+                type="button"
+                onClick={() => setPaused((p) => !p)}
+                className="inline-flex cursor-pointer items-center gap-2 py-2 text-base font-semibold underline decoration-transparent underline-offset-4 hover:decoration-current"
+              >
+                {paused ? <Play size={18} fill="currentColor" /> : <Pause size={18} fill="currentColor" />}
+                {paused ? "Play posing" : "Pause posing"}
+              </button>
+            )}
+            <a
+              href="#thirteen"
+              className="flex w-max items-center gap-2 py-2 text-base font-semibold underline decoration-transparent underline-offset-4 hover:decoration-current"
             >
-              {paused ? <Play size={18} fill="currentColor" /> : <Pause size={18} fill="currentColor" />}
-              {paused ? "Play posing" : "Pause posing"}
-            </button>
-          )}
+              Scroll to unlock
+              <ChevronDown size={20} strokeWidth={2.5} className="scroll-nudge" aria-hidden />
+            </a>
+          </div>
         </div>
       </div>
     </section>

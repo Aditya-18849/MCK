@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { ChevronDown, Lock, LockOpen } from "lucide-react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { AnimateDigits } from "@/components/unlumen-ui/animate-digits";
 import { MotionSubtitle } from "@/components/unlumen-ui/motion-subtitle";
@@ -29,15 +30,15 @@ export function Thirteen() {
           animate={{ backgroundColor: won ? "#cf7233" : "#0b1f2a", color: won ? "#0b1f2a" : "#edf2f4" }}
           initial={false}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="sticky top-0 flex h-screen flex-col justify-between overflow-hidden py-[clamp(24px,5vh,56px)]"
+          className="sticky top-0 flex h-screen flex-col justify-between overflow-hidden pt-[clamp(24px,5vh,56px)] pb-[92px]"
         >
           <div className="wrap flex flex-col justify-between gap-4 md:flex-row md:items-start">
             <h2 className="font-display max-w-[14ch] text-[clamp(2rem,4.6vw,4.25rem)] leading-[1.02]">
-              Eleventh to first, in thirteen days.
+              A coach who turned eleventh into first.
             </h2>
             <p className="max-w-[34ch] text-lg leading-relaxed">
-              After Pittsburgh he considered pulling out of the next show. He went to Reno anyway.
-              It was his twelfth pro contest, and he won it.
+              After Pittsburgh he considered pulling out of the next show. Thirteen days later he won
+              it. He knows what it takes to answer a bad result.
             </p>
           </div>
 
@@ -53,7 +54,7 @@ export function Thirteen() {
                 enterY={120}
                 enterBlur={24}
                 enterDamping={18}
-                className="text-[clamp(13rem,min(38vw,56vh),34rem)] leading-[0.8]"
+                className="text-[clamp(min(13rem,26vh),min(38vw,56vh),34rem)] leading-[0.8]"
               />
             </div>
             <div aria-hidden className="hidden pb-4 text-right md:block">
@@ -65,8 +66,22 @@ export function Thirteen() {
             </div>
           </div>
 
-          <div className="wrap" aria-hidden>
-            <div className="mb-3 flex justify-between text-base font-medium md:hidden">
+          <div className="wrap">
+            <p className="mb-4 flex items-center gap-2.5 text-lg font-semibold md:text-xl">
+              {won ? (
+                <>
+                  <LockOpen size={22} strokeWidth={2.25} aria-hidden />
+                  Unlocked
+                </>
+              ) : (
+                <>
+                  <Lock size={22} strokeWidth={2.25} aria-hidden />
+                  {day === 0 ? "Scroll to unlock" : "Keep scrolling to unlock"}
+                  <ChevronDown size={24} strokeWidth={2.5} className="scroll-nudge" aria-hidden />
+                </>
+              )}
+            </p>
+            <div aria-hidden className="mb-3 flex justify-between text-base font-medium md:hidden">
               <span>{won ? "Legion Sports Fest Pro" : day === 0 ? "Pittsburgh Pro" : "Back to work"}</span>
               <span className="tabular-nums">{dateFor(day)}</span>
             </div>

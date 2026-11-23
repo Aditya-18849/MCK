@@ -12,6 +12,15 @@ export const LINKS = {
     "https://contests.npcnewsonline.com/contests/2026/ifbb_mr_olympia/pnax/murat_can_karahasanlar",
 };
 
+/** WhatsApp number in international format, digits only (for example 61412345678). */
+export const WHATSAPP_NUMBER: string = "";
+/** Text already typed into the chat when a visitor opens it. */
+export const WHATSAPP_MESSAGE = "Hi MCK, I'd like to know more about coaching.";
+/** Null until a number is set, so a button can never open the wrong chat. */
+export const WHATSAPP_URL = WHATSAPP_NUMBER
+  ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
+  : null;
+
 export const img = (name: string) => `${import.meta.env.BASE_URL}img/${name}.webp`;
 
 export const RECORD: {
@@ -77,7 +86,7 @@ export const MILESTONES = [
     sublabel: "4th",
     image: img("row-nypro"),
     imageAlt: "Murat kneeling in a side pose on the New York Pro stage",
-    description: "Top four, beside athletes he had followed for years",
+    description: "Top four, the show he calls career-defining",
   },
   {
     label: "Legion Sports Fest Pro 2026",
@@ -95,11 +104,35 @@ export const MILESTONES = [
   },
 ];
 
+export const JOURNEYS = [
+  {
+    title: "One pose, a season apart",
+    text: "From fourth place in New York to the Olympia stage the following year, kneeling in the same side chest.",
+    before: { image: img("journey-a-before"), label: "New York Pro 2025" },
+    after: { image: img("journey-a-after"), label: "Mr. Olympia 2026" },
+    split: 50,
+  },
+  {
+    title: "Morning to showtime",
+    text: "How he woke up on Olympia show day, and the same back double biceps under the lights.",
+    before: { image: img("journey-b-before"), label: "Olympia show day" },
+    after: { image: img("journey-b-after"), label: "Mr. Olympia 2026" },
+    split: 50,
+  },
+  {
+    title: "Days out to stage",
+    text: "The last few days of prep, seen in one side chest: hotel room first, then the stage.",
+    before: { image: img("journey-c-before"), label: "A few days out" },
+    after: { image: img("journey-c-after"), label: "Mr. Olympia 2026" },
+    split: 45,
+  },
+];
+
 export const ROUTE = [
-  { place: "İzmir", text: "Balçova, where a Turkish national bodybuilder kept chasing professional status." },
-  { place: "Tunisia", text: "March 2022. Overall champion at the NPC Pro Qualifier, and the IFBB Pro card." },
-  { place: "Melbourne", text: "A new country, a new industry, and the base he trains and coaches from." },
-  { place: "Las Vegas", text: "26 September 2026. Fifteenth at Mr. Olympia, Men's Classic Physique." },
+  { place: "İzmir", text: "Balçova, where he kept chasing professional status. He knows what a long goal asks of you." },
+  { place: "Tunisia", text: "March 2022. Overall champion at the NPC Pro Qualifier, and the IFBB Pro card behind his coaching." },
+  { place: "Melbourne", text: "His base. He coaches online from here, so you can train wherever you are." },
+  { place: "Las Vegas", text: "26 September 2026. Fifteenth at Mr. Olympia. Your coach is still competing." },
 ];
 
 export const FAQ = [
@@ -119,7 +152,7 @@ export const FAQ = [
   {
     question: "What does it cost?",
     answer:
-      "Check the coaching link for current prices, inclusions and availability, or message Murat on Instagram.",
+      "Check the coaching link for current prices, inclusions and availability, or ask on WhatsApp.",
   },
   {
     question: "Who coaches Murat?",

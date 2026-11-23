@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CopyButton } from "@/components/unlumen-ui/copy";
+import { WhatsAppButton } from "@/components/whatsapp";
 import { CursorImageTrail } from "@/components/unlumen-ui/cursor-image-trail";
 import { HoverExpand } from "@/components/unlumen-ui/hover-expand";
 import { MagneticButton } from "@/components/unlumen-ui/magnetic-button";
@@ -20,7 +21,7 @@ export function Road() {
     <section className="bg-paper py-[clamp(72px,11vw,168px)]">
       <div className="wrap">
         <TextReveal
-          text="He made himself a promise and kept it for eleven years. It took him from İzmir to the biggest stage in the sport."
+          text="Eleven years after one goal, from İzmir to the biggest stage in the sport. Now that experience works for you."
           className="font-display max-w-[24ch] text-[clamp(2.1rem,5.4vw,5rem)] !leading-[1.06]"
           staggerDelay={0.04}
         />
@@ -33,12 +34,12 @@ export function Road() {
           ))}
         </ol>
         <p className="mt-12 max-w-[60ch] leading-relaxed">
-          Hear him tell it on{" "}
+          Get to know your coach on{" "}
           <a className={link} href={LINKS.hulkcast} {...ext}>
             HulkCast, season 2 episode 8
           </a>
-          : how he started, moving abroad, injuries, and how the sport differs between Turkey and
-          Australia.
+          : how he started, how he trains and eats, his daily routine, and coming back from
+          injuries.
         </p>
       </div>
     </section>
@@ -50,10 +51,10 @@ export function RoomStage() {
     <section className="on-dark bg-room py-[clamp(64px,9vw,136px)]">
       <div className="wrap grid items-center gap-10 lg:grid-cols-[5fr_6fr] lg:gap-20">
         <div>
-          <h2 className={H2}>The room, then the stage.</h2>
+          <h2 className={H2}>The work, then the stage.</h2>
           <p className="mt-6 max-w-[42ch] text-lg leading-relaxed">
-            One pose, two lights. On the left, a hotel room a few days out from the Olympia. On the
-            right, the same front double biceps on the Olympia stage.
+            This is your coach. On the left, a hotel room a few days out from the Olympia. On the
+            right, the same pose on stage. He has done the part nobody sees.
           </p>
           <p className="mt-4 max-w-[42ch] text-lg leading-relaxed text-flare">
             Drag across the photo to go from one to the other.
@@ -93,10 +94,10 @@ export function Posing() {
   return (
     <section id="posing" className="on-dark bg-deep">
       <div className="wrap pt-[clamp(64px,9vw,136px)]">
-        <h2 className={H2}>Posing is the sport.</h2>
+        <h2 className={H2}>An eye trained on stage.</h2>
         <p className="mt-5 max-w-[46ch] text-lg leading-relaxed">
-          Classic Physique is judged standing still. Scroll to turn the wheel, or pick a pose by
-          name.
+          Classic Physique is judged from every angle, and so is your coach. Scroll to turn the
+          wheel, or pick a pose by name.
         </p>
       </div>
       <OrbitalImageWheel
@@ -122,7 +123,7 @@ export function Record() {
   return (
     <section id="record" className="bg-ice py-[clamp(72px,10vw,152px)]">
       <div className="wrap">
-        <h2 className={H2}>The record</h2>
+        <h2 className={H2}>Your coach’s record</h2>
         <div className="mt-10">
           <HoverExpand items={MILESTONES} collapsedHeight={96} expandedHeight={440} defaultIndex={1} />
         </div>
@@ -173,7 +174,8 @@ export function Coaching() {
             Coaching by MCK is premium one-to-one online coaching. You work with Murat directly, an
             active IFBB Pro who answers to a coach of his own.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3">
+            <WhatsAppButton />
             <MagneticButton href={LINKS.coaching} size="lg">
               Start coaching
             </MagneticButton>
@@ -191,9 +193,9 @@ export function Partners() {
       <div className="wrap">
         <div className="grid items-center gap-12 lg:grid-cols-[6fr_5fr] lg:gap-20">
           <div>
-            <h2 className={H2}>He helped make what he takes.</h2>
+            <h2 className={H2}>Your coach helped make the formula.</h2>
             <p className="mt-6 max-w-[52ch] text-lg leading-relaxed">
-              Day One Performance has sponsored Murat for more than three years. For CARD1O, its
+              Day One Performance has sponsored your coach for more than three years. For CARD1O, its
               heart-health supplement, he worked on the ingredient selection and the final formula.
               It is made in Day One’s Melbourne facility.
             </p>
@@ -262,15 +264,14 @@ export function Finale() {
         <div className="wrap pointer-events-none relative z-10 flex flex-col md:min-h-[min(92vh,820px)] justify-between gap-16 pt-[clamp(72px,10vw,140px)] pb-10">
           <div>
             <p className="font-display max-w-[11ch] text-[clamp(3.25rem,11.5vw,11rem)] leading-[0.94]">
-              Your turn under the lights.
+              Your turn to be coached.
             </p>
-            <MagneticButton
-              href={LINKS.coaching}
-              size="lg"
-              className="pointer-events-auto mt-10"
-            >
-              Start coaching
-            </MagneticButton>
+            <div className="pointer-events-auto mt-10 flex w-fit flex-wrap gap-3">
+              <WhatsAppButton />
+              <MagneticButton href={LINKS.coaching} size="lg">
+                Start coaching
+              </MagneticButton>
+            </div>
           </div>
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <ul className="pointer-events-auto flex flex-wrap gap-x-7 gap-y-3 text-lg font-medium">
@@ -279,8 +280,8 @@ export function Finale() {
               <li><a className={link} href={LINKS.coaching} {...ext}>Linktree</a></li>
             </ul>
             <p className="max-w-[46ch] text-sm leading-relaxed md:text-right">
-              Photos: Fractured Glass Images, Jeff Binns for NPC News Online, J. Dashi, and Murat’s
-              own.
+              Photos: Fractured Glass Images, Jeff Binns for NPC News Online, Gilco Productions, J.
+              Dashi, and Murat’s own.
             </p>
           </div>
         </div>
